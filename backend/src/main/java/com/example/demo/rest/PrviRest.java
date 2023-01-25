@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("prvi")
+@CrossOrigin
 public class PrviRest {
 
     @Autowired
@@ -32,6 +33,12 @@ public class PrviRest {
     public String test() {
         return "qwe";
     }
+
+    @GetMapping("test123")
+    public String test123() {
+        return "test123";
+    }
+
 
     @GetMapping("osebe")
     public @ResponseBody Iterable<OsebaDto> getOsebe() {
