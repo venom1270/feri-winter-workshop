@@ -27,7 +27,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build
+    - name: Build project
       run: mvn -B package --file pom.xml -DskipTests
       working-directory: backend
     - name: Run tests
