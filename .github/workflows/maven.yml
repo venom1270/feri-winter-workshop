@@ -30,3 +30,6 @@ jobs:
     - name: Build
       run: mvn -B package --file pom.xml -DskipTests
       working-directory: backend
+    - name: Run tests
+      run: mvn -B test --file pom.xml
+      working-directory: backend
