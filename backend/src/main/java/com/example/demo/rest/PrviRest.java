@@ -28,18 +28,6 @@ public class PrviRest {
         }
         return ret;
     }
-
-    @GetMapping("info")
-    public String test() {
-        return "qwe";
-    }
-
-    @GetMapping("test123")
-    public String test123() {
-        return "test123";
-    }
-
-
     @GetMapping("osebe")
     public @ResponseBody Iterable<OsebaDto> getOsebe() {
         return translateOsebaToDto(osebaRepo.findAll());
@@ -83,5 +71,7 @@ public class PrviRest {
         osebaRepo.delete(val.get());
         return ResponseEntity.ok("Oseba z ID-jem " + id + " izbrisana.");
     }
+
+
 
 }

@@ -20,7 +20,6 @@ public class BancniRacun {
         return dto;
     }
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String stevilkaRacuna;
 
     private BigDecimal znesek;

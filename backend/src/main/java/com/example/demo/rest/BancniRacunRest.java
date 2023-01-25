@@ -63,7 +63,7 @@ public class BancniRacunRest {
     }
 
     @DeleteMapping("/racuni/{id}")
-    public ResponseEntity<String> deleteRacun(@PathParam("id") String id) {
+    public ResponseEntity<String> deleteRacun(@PathVariable("id") String id) {
         //validate
         Optional<BancniRacun> val = bancniRacunRepo.findById(id);
         if (val.isEmpty()) {
@@ -72,7 +72,27 @@ public class BancniRacunRest {
             return new ResponseEntity("Račun s tem id-jem NE obstaja!", HttpStatus.NOT_ACCEPTABLE);
         }
 
-        bancniRacunRepo.delete(val.get());
+        BancniRacun br = val.get();
+        br.setCasZaprtja(LocalDateTime.now());
+        bancniRacunRepo.save(br);
+
+        return ResponseEntity.ok("Račun z ID-jem " + id + " zaprt.");
+    }
+
+    @PutMapping("/racuni/{id}")
+    public ResponseEntity<String> updateRacun(@PathVariable("id") String id, @RequestBody BancniRacunDto racun) {
+        //validate
+        Optional<BancniRacun> val = bancniRacunRepo.findById(id);
+        if (val.isEmpty()) {
+            System.out.println("NOT FOUND");
+            //log.info("POST /products; ProductCategroy not found!");
+            return new ResponseEntity("Račun s tem id-jem NE obstaja!", HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        BancniRacun br = val.get();
+        br.setKomitent(racun.getKomitent());
+        br.setZnesek(racun.getZnesek());
+        bancniRacunRepo.save(br);
         return ResponseEntity.ok("Račun z ID-jem " + id + " izbrisan.");
     }
 
