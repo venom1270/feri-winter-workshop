@@ -1,5 +1,5 @@
 import { Button, CircularProgress } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, fetchData } from 'react';
 import { OsebeApi } from '../../api/api';
 import OsebeTable from './OsebeTable';
 

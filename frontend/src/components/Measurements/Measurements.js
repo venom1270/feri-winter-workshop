@@ -1,5 +1,5 @@
 import { Button, CircularProgress } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, fetchData } from 'react';
 import { MeasurementsApi } from '../../api/api';
 import AddMeasurement from './AddMeasurement';
 import MeasurementsTable from './MeasurementsTable';
