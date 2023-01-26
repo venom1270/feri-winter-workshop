@@ -76,4 +76,13 @@ export class OsebeApi {
     getProductById = (ime) => {
         return this.client.get(`/prvi/osebe/${ime}`);
     }
+    postOseba = (ime, priimek, email, idKomitenta) => {
+        return this.client.post("/prvi/osebe", {
+            id: 0,
+            ime: ime,
+            priimek: priimek,
+            email: email,
+            idKomitenta: idKomitenta
+        });
+    }
 }

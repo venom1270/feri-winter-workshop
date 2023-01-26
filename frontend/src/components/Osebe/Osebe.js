@@ -1,6 +1,7 @@
 import { Button, CircularProgress } from '@mui/material';
 import React, { useEffect, useState, fetchData } from 'react';
 import { OsebeApi } from '../../api/api';
+import AddOseba from './AddOseba';
 import OsebeTable from './OsebeTable';
 
 const Products = () => {
@@ -34,11 +35,12 @@ const Products = () => {
     }
     return (
         <div style={{ padding: '25px' }}>
-            <h2>Products</h2>
-            <Button variant="contained" onClick={handleOpen}>New Oseba TODO</Button>
+            <h2>Osebe</h2>
+            <Button variant="contained" onClick={handleOpen}>New Oseba</Button>
             <br />
             <br />
             {loaded ? <OsebeTable osebe={osebe} /> : <CircularProgress />}
+            <AddOseba open={open} handleClose={handleClose} />
         </div>
     );
 }
