@@ -27,9 +27,15 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Build
+    - name: Build project
       run: mvn -B package --file pom.xml -DskipTests
       working-directory: backend
     - name: Run tests
       run: mvn -B test --file pom.xml
+      working-directory: backend
+    - name: Analyze with SonarCloud
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=feri-winter2023_feri-winter-backend
       working-directory: backend
